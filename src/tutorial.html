@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>赚钱教程</title>
+		<link rel="stylesheet" href="./css/reset.css" />
+		<style>
+			html,
+			body {
+				display: block;
+				height: 100%;
+				height: auto !important;
+				min-height: 100%;
+				overflow: auto;
+				font-family: PingFangSC-Medium, sans-serif;
+				-webkit-overflow-scrolling: touch;
+				background: #FC4E33;
+			}
+			
+			.tab {
+				height: 0.45rem;
+				width: 100%;
+				background: white;
+			}
+			
+			.tab li {
+				width: 50%;
+				height: 100%;
+				float: left;
+				font-size: 0.15rem;
+				line-height: 0.45rem;
+				text-align: center;
+				font-weight: 600;
+			}
+			
+			.tab li.active {
+				color: #FC4E33;
+			}
+			
+			.item {
+				width: 3.55rem;
+				margin: 0 auto 0;
+				padding-top: 0.22rem;
+			}
+			
+			.item img {
+				display: block;
+				width: 100%;
+			}
+			
+			.item .tip {
+				width: 3.55rem;
+				margin: 0 auto 0.15rem;
+				padding: 0.1rem;
+				background: white;
+				color: #FC4E33;
+				border-radius: 0.05rem;
+			}
+			
+			.item .title {
+				width:3.25rem;
+				padding:0.12rem 0.2rem;
+				margin:0 auto;
+				word-break: break-all;
+				font-size: 0.14rem;
+				line-height: 1.4;
+				border: 0;
+				border-radius: 0.31rem;
+				background: white;
+				font-weight: 600;
+				text-align: left;
+				color: #333333;
+				white-space: pre-wrap;
+			}
+			.item .title .red{color:#FC4E33;}
+			.item img {
+				display: block;
+				margin: 0.08rem auto;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="loadingDiv" style="position:absolute;left:0;width:100%;height:100%;top:0;background:url(./img/loading2.gif) no-repeat center center white;background-size:18px auto;opacity:100;filter:alpha(opacity=100);z-index:10000;"></div>
+		<section id="main" style="opacity:0;filter:alpha(opacity=0);">
+			<ul class="tab">
+				<li class="active">自购省钱</li>
+				<li>组团赚钱</li>
+			</ul>
+			<div class="container">
+
+				<div class="item">
+					<div class="tip center">在返利超人有两种自购省钱方式，一种是自己挑选满意的宝贝, 领券去淘宝购买赚钱，另一种是拷贝淘宝链接到返利超人搜索 优惠券和返利tv再去购买
+					</div>
+					<div class="title">第一步：在返利超人挑选到您想买的宝贝</div>
+					<img src="./img/tutorialSM/zhuanqian_one@2x.png" alt="" />
+					<div class="title">或去淘宝“拷贝链接”到返利超人搜索优惠券和佣金</div>
+					<img src="./img/tutorialSM/zhuanqian_two@2x.png" alt="" />
+					
+					<img src="./img/tutorialSM/zhuanqian_three@2x.png" alt="" />
+					<div class="title">第二步：<span class="red">搜索链接</span>找到优惠券和返利商品领券购买</div>
+					<img src="./img/tutorialSM/zhuanqian_four@2x.png" alt="" />
+					<div class="title">跳转到淘宝领券页面，点击<span class="red">“立即领券”</span>去购买商品</div>
+					<img src="./img/tutorialSM/zhuanqian_five@2x.png" alt="" />
+					<div class="title">发现了没，用了返利超人的优惠券足足便宜了100元还赚到了10.62元的佣金</div>
+					<img src="./img/tutorialSM/zhuanqian_six@2x.png" alt="" />
+				</div>
+
+				<div class="item" style="display:none;">
+					<div class="tip center">在返利超人想实现月入过万，必须要掌握组团赚钱的技巧，只要
+你培养出了20个得力的下降，月入5000妥妥的。
+					</div>
+					<div class="title">第一步：<span class="red">发送邀请海报</span>邀请好友</div>
+					<img src="./img/tutorialSM/zutuan_one@2x.png" alt="" />
+					
+					<img src="./img/tutorialSM/zutuan_two@2x.png" alt="" />
+					<div class="title">第二步：好友识别二维码<span class="red">下载返利超人APP</span></div>
+					<img src="./img/tutorialSM/zutuan_three@2x.png" alt="" />
+					<div class="title">第三步：好友<span class="red">手机登陆</span>成功，即成为你的下级</div>
+					<img src="./img/tutorialSM/zutuan_four@2x.png" alt="" />
+					<div class="title">第三步：<span class="red">建微信群拉好友</span>一起开始组团赚钱</div>
+					<img src="./img/tutorialSM/zutuan_five@2x.png" alt="" />
+				</div>
+			</div>
+		</section>
+		<script>
+			document.onreadystatechange = completeLoading;
+			//加载状态为complete时移除loading效果  
+			function completeLoading() {
+				if(document.readyState == "complete") {
+					var loadingMask = document.getElementById('loadingDiv');
+					loadingMask.parentNode.removeChild(loadingMask);
+					var main = document.getElementById('main');
+					main.style.setProperty("opacity", 100)
+					main.style.setProperty("filter", "alpha(opacity=100)")
+				}
+			}
+		</script>
+	</body>
+	<script type="text/javascript" src="./static/fastclick.js"></script>
+	<script type="text/javascript" src="./static/common.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/zepto@1.2.0/dist/zepto.js"></script>
+	<script type="text/javascript">
+		/**
+		 * @param   userId 用户Id
+		 */
+		var userID = TJY.getUrlParams("userId");
+		/**
+		 * 选项卡
+		 */
+		$(".tab li").on("click", function() {
+			var itemIndex = $(this).index();
+			$(this).addClass("active").siblings().removeClass("active");
+			$(".item").eq(itemIndex).show().siblings(".item").hide();
+		});
+		
+	</script>
+
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><title>升级明星超人</title><link rel="stylesheet" href="./css/reset.css?v=003914f067"><link rel="stylesheet" href="./css/upSM.css?v=e5ad83507a"></head><body><div id="loadingDiv" style="position:absolute;left:0;width:100%;height:100%;top:0;background:url(img/loading2.gif?v=0e421c43b7) no-repeat center center #fff;background-size:18px auto;opacity:100;z-index:10000"></div><section id="main" style="opacity:0"><div style="height:2.17rem"></div><div class="item"><div class="title" style="background-image:url(img/upSM/shngji_biaoti.png?v=cca0eb78ac)"></div><div class="item-wrap item-wrap1"><ul class="clearfix"><li><b>20人</b><span>一级超人</span></li><li><b>50人</b><span>二级超人</span></li></ul></div></div><div style="margin-bottom:.5rem"></div><div class="item"><div class="title" style="background-image:url(img/upSM/shengj_ibiaotitwo.png?v=c75e330c26)"></div><div class="item-wrap"><p class="p1">1、一级超人指的是你直接发展邀请的下级好友；<br>2、二级超人指的是你的一级超人邀请的下级好友。</p><h3 class="red">升级明星超人小秘籍</h3><p class="p1 red">1、自己先学会利用返利超人分享赚钱，然后邀请亲朋好友同学 加入，因为这些人对你的信任度最强，而且你已经尝试赚到钱了 ，才会放心推荐给他们，也会用心的教他们。</p><p class="p1 red">2、组建自己的微信群，这个群一定要限制人数规模，初期不易 超过30人，进群的必须是要真正做返利超人并且每天都有收入 的人，僵尸用户一定要剔除掉，否则影响活跃度。</p><p class="p1 red">3、群内组织培训，下级超人如果产生一定收入，比如10元这 种，作为群主你可以发专属红包奖励；在群里经常推荐一些热卖 的商品告诉大家一起推广，帮助群内成员选品、解答疑问。</p><p class="p1 red">4、邀请几个铁杆好友一起加入返利超人，让他们也加入你的微 信群，一起来负责群的运营和活跃，好友们也可以把他们自己的 下级邀请进群，这样群策群力，群氛围和战斗力就逐步形成。</p><p class="p1 red">5、多去发展哪些有赚钱欲望和赚钱能力的人成为你的下级超人， 发展一个给力的下级比发展100个普通下级都有用，微商、全职 宝妈、社群积极分子、私营业主/导购员都是目前在返利超人里 收入最高的人群。</p></div></div><div style="margin-bottom:.5rem"></div><div class="item"><div class="title" style="background-image:url(img/upSM/shengji_biaotithree.png?v=9548970cce)"></div><div class="item-wrap item-wrap2"><ul><li><div class="r"><span class="num-level1">0人</span> <span>一级超人</span></div><div class="r"><button>目标人数20人</button></div></li><li><div class="r"><span class="num-level2">0人</span> <span>二级超人</span></div><div class="r"><button>目标人数50人</button></div></li></ul></div></div></section><script>function completeLoading(){if("complete"==document.readyState){var e=document.getElementById("loadingDiv");e.parentNode.removeChild(e);var t=document.getElementById("main");t.style.setProperty("opacity",100),t.style.setProperty("filter","alpha(opacity=100)")}}document.onreadystatechange=completeLoading</script></body><script src="./static/fastclick.js"></script><script src="./static/common.js"></script><script src="https://unpkg.com/zepto@1.2.0/dist/zepto.js"></script><script>/**
+		 * @param   userId 用户Id
+		 */
+		var userID = TJY.getUrlParams("userId");
+		/**
+		 * 参数：userId
+		 */
+		$.ajax({
+			url: ajaxUrl + "/get/user/teamNum",
+			type: "GET",
+			dataType: "json", //指定服务器返回的数据类型
+			data: {
+				userId: userID
+			},
+			success: function(res) {
+				console.log(res);
+				const data = res.data;
+				$(".num-level1").html(`${data.oneNum}人`);
+				$(".num-level2").html(`${data.twoNum}人`);
+			},
+			error:function(err){
+				console.log(err);
+			}
+		})</script></html>

@@ -1,0 +1,120 @@
+<!DOCTYPE html><html><head><meta charset="utf-8"><meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no"><title>返利超人</title><link rel="stylesheet" href="./css/reset.css?v=003914f067"><link rel="stylesheet" href="./css/landPage.css?v=a34c590161"></head><body><div id="loadingDiv" style="position:absolute;left:0;width:100%;height:100%;top:0;background:url(img/loading2.gif?v=0e421c43b7) no-repeat center center #fff;background-size:18px auto;opacity:100;z-index:10000"></div><section id="main" style="opacity:0"><div style="height:.3rem"></div><div class="user"><div class="headpath"></div><div class="info"><p class="name"></p><p class="p2">喊你来抢隐藏优惠券</p></div></div><div style="height:.2rem"></div><div class="banner"></div><div style="height:.2rem"></div><a href="" id="linkedME">免费下载返利超人APP</a><div style="height:.26rem"></div><p class="p1">省钱领券三步走</p><div style="height:.2rem"></div><ul class="process"><li><div><span>1</span><span>下载APP</span></div></li><li><div><span>2</span><span>手机号登陆</span></div></li><li><div><span>3</span><span>输入邀请码</span></div></li></ul><div style="height:.2rem"></div><div class="copy"></div><div style="height:.1rem"></div><div class="banner2"></div></section><script>function completeLoading(){if("complete"==document.readyState){var e=document.getElementById("loadingDiv");e.parentNode.removeChild(e);var t=document.getElementById("main");t.style.setProperty("opacity",100),t.style.setProperty("filter","alpha(opacity=100)")}}document.onreadystatechange=completeLoading</script></body><div style="display:none"><script src="https://s5.cnzz.com/z_stat.php?id=1275359852&web_id=1275359852" language="JavaScript"></script></div><script src="./static/fastclick.js"></script><script src="./static/common.js"></script><script src="https://unpkg.com/zepto@1.2.0/dist/zepto.js"></script><script src="https://static.lkme.cc/linkedme.min.js"></script><script>/**
+		 * 友盟数据统计
+		 */
+		var _czc = _czc || [];
+		_czc.push(["_setAccount", "1275359852"]);
+		_czc.push(["_trackEvent", "扫码邀请页", "打开", "返利超人", 1, "skip"]);
+		/**
+		 * @param   userId 用户Id
+		 */
+		var userID = TJY.getUrlParams("userId");
+		var invitation = TJY.getUrlParams("invitation");
+//		$("#foo").val(invitation);
+		/**
+		 * 参数：userId
+		 */
+		$.ajax({
+			url: ajaxUrl + "/user/get",
+			type: "POST",
+			dataType: "json", //指定服务器返回的数据类型
+			data: {
+				userId: userID
+			},
+			success: function(res) {
+				console.log(res);
+				const data = res.data;
+				$('.name').html(data.nickName);
+				$('.headpath').css("background-image", `url(${data.headPath})`);
+			},
+			error: function(err) {
+				console.log(err);
+			}
+		})
+
+		function userData() {
+			return new Promise((resolve, reject) => {
+				$.ajax({
+					url: ajaxUrl + "/user/get",
+					type: "POST",
+					dataType: "json", //指定服务器返回的数据类型
+					data: {
+						userId: userID
+					},
+					success: function(res) {
+						resolve(res);
+					},
+					error: function(err) {
+						reject(err);
+					}
+				})
+			})
+		}
+		userData().then(res=>{
+			if(res.msg=="信息返回成功"){
+				const data = res.data;
+				$('.name').html(data.name);
+				$('.headpath').css("background-image", `url(${data.headPath})`);
+			}
+			else{
+				return userData();
+			}
+			
+		});
+		/**
+		 * 复制邀请码
+		 */
+//		var clipboard = new ClipboardJS('.btn');
+//		clipboard.on('success', function(e) {
+//			$('#btn').html("复制成功");
+//			$("#btn").css("color", "#308adc");
+//		});
+//		clipboard.on('error', function(e) {
+//			alert("请手动复制邀请码");
+//		});
+		//touchstart类似mousedown
+		//		document.body.ontouchstart = function(e){
+		//			$(".btn").trigger("click");
+		//		};
+		//	    
+		/**
+		 * 深度链接
+		 */
+		var channel = getUrlParams("channel"); //深度链接渠道
+		var invitation = getUrlParams("invitation"); //标题\
+		var inviteCode = getUrlParams("inviteCode");
+		linkedme.init("67aadce5ce66282a36433f6e352825cb", {
+			type: "live"
+		}, null);
+		var data = {};
+		data.type = "live"; //表示现在使用线上模式,如果填写"test", 表示测试模式.【可选】
+		data.feature = "功能名称"; // 自定义深度链接功能，多个用逗号分隔，【可选】
+		data.stage = "阶段名称"; // 自定义深度链接阶段，多个用逗号分隔，【可选】
+		data.channel = "渠道链接"; // 自定义深度链接渠道，多个用逗号分隔，【可选】
+		data.tags = "linkedME"; // 自定义深度链接标签，多个用逗号分隔，【可选】
+		data.ios_custom_url = ""; // 自定义iOS平台下App的下载地址，如果是AppStore的下载地址可以不用填写，需填写http或https【可选】
+		data.ios_direct_open = ""; //未安装情况下，设置为true为直接打开ios_custom_url，默认为false【可选】
+		data.android_custom_url = ""; // 自定义安卓平台下App的下载地址，需填写http或https【可选】
+		data.android_direct_open = ""; //设置为true，所有情况下跳转android_custom_url，默认为false【可选】
+		var value1 = channel;
+		var value2 = invitation;
+		var value3 = inviteCode;
+		data.params = '{"channel":"' + value1 + '","invitation":"' + value2 + '","inviteCode":"' + value3 + '"}'; //注意单引号和双引号的位置
+		linkedme.link(data, function(err, response) {
+			if(err) {
+				// 生成深度链接失败，返回错误对象err
+			} else {
+				console.log(data.params);
+				/**
+				 * 立即领取
+				 */
+				$("#linkedME").attr("href", response.url);
+			}
+		}, false);
+
+		//获取Url地址中userId参数
+		function getUrlParams(name) {
+			var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"); //定义正则表达式 
+			var r = unescape(window.location.search).substr(1).match(reg);
+			if(r != null) return unescape(r[2]);
+			return null;
+		}</script></html>

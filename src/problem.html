@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		<title>常见问题</title>
+		<link rel="stylesheet" href="./css/reset.css" />
+		<link rel="stylesheet" href="./css/problem.css" />
+	</head>
+
+	<body>
+		<div id="loadingDiv" style="position:absolute;left:0;width:100%;height:100%;top:0;background:url(./img/loading2.gif) no-repeat center center white;background-size:18px auto;opacity:100;filter:alpha(opacity=100);z-index:10000;"></div>
+		<section id="main" style="opacity:0;filter:alpha(opacity=0);">
+			<div class="item">
+				<div class="l">
+					<img src="./img/problem/changjian_fanli@3x.png" alt="" />
+					<span>返利超人</span>
+				</div>
+				<ul class="r">
+					<li onclick="go('什么是返利超人？',1)">什么是返利超人？</li>
+					<li onclick="go('返利超人可靠吗？',2)">返利超人可靠吗？</li>
+					<li onclick="go('返利超人如何保护用户信息？',3)">返利超人如何保护用户信息？</li>
+				</ul>
+			</div>
+
+			<div class="item">
+				<div class="l">
+					<img src="./img/problem/changjian_dingdan@3x.png" alt="" />
+					<span>关于订单</span>
+				</div>
+				<ul class="r">
+					<li onclick="go('已经收获的订单失效了怎么处理？',4)">已经收获的订单失效了怎么处理？</li>
+					<li onclick="go('订单信息在那里查看？',5)">订单信息在那里查看？</li>
+					<li onclick="go('如何退货退款？',6)">如何退货退款？
+</li>
+				</ul>
+			</div>
+
+			<div class="item">
+				<div class="l">
+					<img src="./img/problem/changjian_yongjin@3x.png" alt="" />
+					<span>关于佣金
+</span>
+				</div>
+				<ul class="r">
+					<li onclick="go('什么时候可以提现？',7)">什么时候可以提现？</li>
+					<li onclick="go('为什么下单之后没有佣金？',8)">为什么下单之后没有佣金？</li>
+					<li onclick="go('提现为什么没有到账？',9)">提现为什么没有到账？</li>
+				</ul>
+			</div>
+
+			<div class="item">
+				<div class="l">
+					<img src="./img/problem/chanjian_youhuiquan@3x.png" alt="" />
+					<span>关于优惠券</span>
+				</div>
+				<ul class="r">
+					<li onclick="go('返利超人如何保障商品品质？',10)">返利超人如何保障商品品质？</li>
+					<li onclick="go('优惠券如何查找？',11)">优惠券如何查找？</li>
+					<li onclick="go('为什么优惠券会失效？',12)">为什么优惠券会失效？</li>
+				</ul>
+			</div>
+
+			<div class="item">
+				<div class="l">
+					<img src="./img/problem/changjian_tuandui@3x.png" alt="" />
+					<span>关于团队</span>
+				</div>
+				<ul class="r">
+					<li onclick="go('我不懂，新手教学在哪查看？',13)">新手教学在哪查看？</li>
+					<li onclick="go('兼职可以做明星超人吗？',14)">兼职可以做明星超人吗？</li>
+					<li onclick="go('成为超人需要交钱吗？',15)">成为超人需要交钱吗？</li>
+				</ul>
+			</div>
+		</section>
+		<script>
+			document.onreadystatechange = completeLoading;
+			//加载状态为complete时移除loading效果  
+			function completeLoading() {
+				if(document.readyState == "complete") {
+					var loadingMask = document.getElementById('loadingDiv');
+					loadingMask.parentNode.removeChild(loadingMask);
+					var main = document.getElementById('main');
+					main.style.setProperty("opacity",100)
+					main.style.setProperty("filter", "alpha(opacity=100)")					
+				}
+			}
+		</script>
+	</body>
+	<script type="text/javascript" src="./static/fastclick.js"></script>
+	<script type="text/javascript" src="./static/common.js"></script>
+	<script type="text/javascript" src="https://unpkg.com/zepto@1.2.0/dist/zepto.js"></script>
+	<script type="text/javascript">
+		/**
+		 * @param   userId 用户Id
+		 */
+		var userID = TJY.getUrlParams("userId");
+
+		function go(name, type) {
+			window.location.href = "./answer.html?"+escape(`userId=${userID}&name=${name}&type=${type}`)
+		}
+		
+	</script>
+
+</html>

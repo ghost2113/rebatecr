@@ -1,0 +1,159 @@
+@charset "utf-8";
+//背景图
+@mixin bg($imgUrl,$position){
+    background:url($imgUrl) no-repeat $position center;
+    background-size:100% auto;
+}
+//flex布局
+@mixin flex($direction, $justify:center, $alignItems:center) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $alignItems;
+}
+
+//字体样式
+@mixin font($size:14px, $weight:500, $family:"微软雅黑", $height:1.4, $color:#000) {
+    font-size: $size;
+    font-weight: $weight;
+    font-family: $family;
+    line-height: $height;
+    color: $color;
+}
+
+//多行文本溢出
+@mixin overflow($num:1) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $num;
+    overflow: hidden;
+}
+
+//元素水平居中
+@mixin centerRow {
+    margin: 0 auto;
+}
+
+@mixin img100 {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+//主题黄色
+$borderColor:#FC4E33;
+$themeColor:#FC4E33;
+.red{
+    color:#FC4E33;
+}
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+.clearfix {display: inline-block;}
+/**
+  * 
+ */
+html,
+body {
+    display: block;
+    height:100%;
+    overflow: auto;
+    font-family: PingFangSC-Medium, sans-serif;
+    -webkit-overflow-scrolling: touch;
+    background:#FFC55E;
+}
+#main {   
+    height:100%;
+    @include bg("../img/landPage/bg@2x.png",top);  
+    @include flex(column,flex-start,center);
+    .user{
+        @include flex(row,flex-start,center);
+        width:3.35rem;
+        height:0.45rem;
+        .headpath{
+            width:0.45rem;
+            height:0.45rem;
+            border-radius:50%;
+            overflow: hidden;
+            background-size:100% auto;
+            background-position: center center;
+            background-repeat:no-repeat; 
+        }
+        .info{
+            margin-left:0.05rem;
+             @include font(0.12rem,600,null,1.4,#333);
+            .p2{
+                font-weight:500;
+            }
+        }
+    }
+    .banner{
+        width:3.36rem;
+        height:1.06rem;
+        @include bg("../img/landPage/wenan@2x.png",center);  
+    }
+    .banner2{
+        width:3.01rem;
+        height:2.06rem;
+        @include bg("../img/landPage/zuixiamian_pic@2x.png",center);  
+    }
+    #linkedME{
+        display:block;
+        width:2.62rem;
+        height:0.59rem;
+        text-align:center;
+        @include font(0.18rem,600,null,0.59rem,#fff);
+        @include bg("../img/landPage/anniu@2x.png",center);
+    }
+    .p1{
+        text-align:center;
+        @include font(0.15rem,600,null,1.4,#333);
+    }
+    .process{
+        width:3.35rem;
+        height:0.6rem;
+        @include flex(row,space-around,center);
+        li{
+            width:1.03rem;
+            height:0.6rem;
+            padding:0.03rem;
+            background:white;
+            border-radius:0.3rem;
+            div{
+                width:100%;
+                height:100%;
+                border-radius:0.27rem;
+                border:1px solid #FFC55E;
+                color:#333;
+                @include flex(column,center,center);
+                font-size:0.18rem;
+                span:nth-of-type(2){
+                    font-size:0.12rem;
+                }
+            }
+        }
+    }
+    .copy{
+        @include flex(row,center,center);
+        #foo{
+            width:0.5rem;
+            background:none;
+            border:none;
+            color:#FF4349;
+            font-weight:600;
+        }
+        .btn{
+            background:none;
+            border:none;
+            color:#FF4349;
+            font-weight:600;
+            text-decoration: underline;
+        }
+    }
+}
+

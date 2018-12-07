@@ -1,0 +1,114 @@
+@charset "utf-8";
+//背景图
+@mixin bg($imgUrl, $position) {
+    background: url($imgUrl) no-repeat $position center;
+    background-size: 100% auto;
+}
+
+//flex布局
+@mixin flex($direction, $justify:center, $alignItems:center) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $alignItems;
+}
+
+//字体样式
+@mixin font($size:14px, $weight:500, $family:"微软雅黑", $height:1.4, $color:#000) {
+    font-size: $size;
+    font-weight: $weight;
+    font-family: $family;
+    line-height: $height;
+    color: $color;
+}
+
+//多行文本溢出
+@mixin overflow($num:1) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $num;
+    overflow: hidden;
+}
+
+//元素水平居中
+@mixin centerRow {
+    margin: 0 auto;
+}
+
+@mixin img100 {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+//主题黄色
+$borderColor:#F2F3F7;
+$themeColor:#FC4E33;
+.red {
+    color: #FC4E33;
+}
+
+.clearfix:after {
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
+}
+
+.clearfix {
+    display: inline-block;
+}
+
+
+/**
+  * 
+ */
+
+html,
+body {
+    display: block;
+    height: 100%;
+    min-height: 100%;
+    height: auto !important;
+    overflow: auto;
+    font-family: PingFangSC-Medium, sans-serif;
+    -webkit-overflow-scrolling: touch;
+}
+
+#main {
+    padding-bottom: 0.3rem;
+    color: #666;
+    .item {
+        border-top: 1px solid $borderColor;
+        @include flex(row, flex-start, center);
+        .l {
+            font-size: 0.15rem;
+            width: 1rem;
+            @include flex(column, center, center);
+            img {
+                display: block;
+                width: 0.22rem;
+            }
+        }
+        .r {
+            border-left: 1px solid $borderColor;
+            font-size: 0.13rem;
+            flex: 1;
+            li {
+                height: 0.4rem;
+                text-indent: 2em;
+                line-height: 0.4rem;
+                border-bottom: 1px solid $borderColor;
+            }
+            li:last-of-type {
+                border: none;
+                border: 0;
+            }
+        }
+    }
+    .item:last-of-type {
+        border-bottom: 1px solid $borderColor;
+    }
+}

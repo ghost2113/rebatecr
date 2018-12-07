@@ -1,0 +1,194 @@
+@charset "utf-8";
+// 默认将输出webkit前缀，moz前缀和标准
+@mixin prefixer($property, $value, $prefixes: webkit moz o ms) {
+    #{$property}: $value;
+    @each $prefix in $prefixes {
+        @if $prefix==webkit {
+            -webkit-#{$property}:#{$value};
+        }
+        @else if $prefix==moz {
+            -moz-#{$property}:#{$value};
+        }
+        @else if $prefix==o {
+            -o-#{$property}:#{$value};
+        }
+        @else if $prefix==ms {
+            -ms-#{$property}:#{$value};
+        }
+    }
+}
+//flex布局
+@mixin flex($direction, $justify:center, $alignItems:center) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $alignItems;
+}
+
+//字体样式
+@mixin font($size:14px, $weight:500, $family:"微软雅黑", $height:1.4, $color:#000) {
+    font-size: $size;
+    font-weight: $weight;
+    font-family: $family;
+    line-height: $height;
+    color: $color;
+}
+
+//多行文本溢出
+@mixin overflow($num:1) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $num;
+    overflow: hidden;
+}
+
+//元素水平居中
+@mixin centerRow {
+    margin: 0 auto;
+}
+
+@mixin img100 {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+//主题黄色
+$borderColor:#f2f2f2;
+$themeColor:#fb2e3c;
+html,
+body {
+    height:100%;
+    min-height: 100%;
+    display: block;
+    posision: relative;
+    left: 0;
+    top: 0;
+    overflow: auto;
+}
+#main {
+    box-sizing: border-box;
+    //banner
+    .banner {
+        padding: 0.4rem 0 0.2rem 0;
+        @include flex(row,center,center);
+        img{
+            display:block;
+            width:2.6rem;
+            height:1.9rem;
+        }
+    }
+    .desc{
+        margin-bottom:0.2rem;
+        text-align:center;
+        @include font(0.18rem, 500, null, 0.24rem, #333);
+    }
+    .discBtn {
+        display: block;
+        width: 3rem;
+        height: 0.45rem;
+        margin: 0 auto 0.3rem;
+        @include font(0.17rem, 500, null, 0.45rem, #fff);
+        background: #E73D3D;
+        text-align: center;
+        border-radius: 0.225rem;
+    }
+    .container {    
+        width:3.2rem;
+        padding-bottom:0.2rem;
+        margin:0 auto;
+        border-radius:0.1rem;
+        box-shadow:0 0 0.11rem 0 rgba(0,0,0,0.1);
+        .lists-title{
+            height:0.5rem;
+            @include flex(row,space-around,center); 
+            @include font(0.14rem, 500, null,1.4,#333333 );
+            span{
+                display:block;
+                width:0.8rem;
+                height:0;
+                border:1px solid $borderColor;
+            }  
+        }   
+        //徒弟列表        
+        .discCon {
+            display: block;
+            width: 100%;
+            padding:0 0.25rem;
+            box-sizing: border-box;
+            .dropload-load {
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                line-height: 3;
+            }
+            .discList {
+                width: 100%;
+                /**
+             * 默认图片
+             */
+                .noDisc {
+                    display: block;
+                    margin: 0 auto;
+                    width: 0.96rem;
+                    height: 1.19rem;
+                }
+                li {
+                    display: flex;
+                    display: -webkit-flex;
+                    flex-direction: row;
+                    align-items: center;
+                    justify-content: center;
+                    height: 0.5rem;
+                    width: 100%;
+                    border-bottom: 1px solid $borderColor;
+                    box-sizing: border-box;
+                    font-size: 0.13rem;
+                    color: #1a1a1a;
+                    div {
+                        flex: 1;
+                        display: flex;
+                        display: -webkit-flex;
+                        flex-direction: row;
+                        align-items: center;
+                    }
+                    div:nth-child(1) {
+                        justify-content: flex-start;
+                        .userPhoto {
+                            display: flex;
+                            display: -webkit-flex;
+                            flex-direction: row;
+                            align-items: center;
+                            width: 0.35rem;
+                            height: 0.35rem;
+                            border-radius: 1000px;
+                            overflow: hidden;
+                            img {
+                                display: block;
+                                width: 100%;
+                            }
+                        }
+                        .userName {
+                            font-size: 0.13rem;
+                            padding: 0 0.1rem;
+                        }                      
+                    }
+                    div:nth-child(2) {
+                        justify-content: flex-end;
+                    }
+                    .redFont {
+                        color: #f65656;
+                    }
+                    //我的徒弟选择项卡样式
+                    .disc-status {
+                        color: #999999;
+                        .red{
+                            color:$themeColor;
+                        }
+                    }
+                }
+            }
+        }
+    }    
+}

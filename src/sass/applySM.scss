@@ -1,0 +1,118 @@
+@charset "utf-8";
+//背景图
+@mixin bg($imgUrl,$position){
+    background:url($imgUrl) no-repeat $position center;
+    background-size:100% auto;
+}
+//flex布局
+@mixin flex($direction, $justify:center, $alignItems:center) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $alignItems;
+}
+
+//字体样式
+@mixin font($size:14px, $weight:500, $family:"微软雅黑", $height:1.4, $color:#000) {
+    font-size: $size;
+    font-weight: $weight;
+    font-family: $family;
+    line-height: $height;
+    color: $color;
+}
+
+//多行文本溢出
+@mixin overflow($num:1) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $num;
+    overflow: hidden;
+}
+//元素水平居中
+@mixin centerRow {
+    margin: 0 auto;
+}
+
+@mixin img100 {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+//主题黄色
+$borderColor:#FC4E33;
+$themeColor:#fb2e3c;
+.red{
+    color:#fb2e3c;
+}
+html,
+body {
+    display: block;
+    height:100%;
+    min-height: 100%;
+    height:auto !important;
+    overflow: auto;
+     -webkit-overflow-scrolling: touch;
+}
+#main {   
+    @include bg("../img/applySM/bg.png",top);
+    padding-bottom:0.7rem;
+   .item{
+       position:relative;
+       width:3.55rem;
+       margin:0 auto;
+       padding:0.1rem;
+       background:white;
+       border-radius:0.1rem;
+       .title{
+           position:absolute;
+           left:0;
+           right:0;
+           top:-0.24rem;
+           width:2rem;
+           height:0.4rem;
+           margin:0 auto;
+           @include bg("../img/applySM/biaotione.png",center);
+       }
+       .item-wrap{
+            padding:0.12rem 0.1rem 0;
+            @include font(0.12rem,500,null,1.4,#333);
+            border:1px solid $borderColor;
+            border-radius:0.1rem;
+            h3{
+                color:#000;
+                padding:0.07rem 0 0.05rem;
+            }
+            h3:nth-of-type(1){
+                padding-top:0;
+            }
+            p{
+                padding-bottom:0.1rem;
+            }
+            .p1{
+                color:#333333;
+            }
+            .p2{
+                font-weight:600;
+                color:#FC4E33;
+            }
+            .red{
+                color:#fb2e3c;
+            }
+       }
+   }
+}
+/**
+     * 底部
+ */
+#footer{
+    position:fixed;
+    left:0;
+    bottom:0;
+    width:100%;
+    height:0.5rem;
+    background:#FFC200;
+    @include font(0.18rem,600,null,0.5rem,#fff);
+    text-align:center;
+}
