@@ -1,4 +1,18 @@
 @charset "utf-8";
+@font-face {
+  font-family: 'iconfont';  /* project id 776597 */
+  src: url('//at.alicdn.com/t/font_776597_wmaj4dokksh.eot');
+  src: url('//at.alicdn.com/t/font_776597_wmaj4dokksh.eot?#iefix') format('embedded-opentype'),
+  url('//at.alicdn.com/t/font_776597_wmaj4dokksh.woff') format('woff'),
+  url('//at.alicdn.com/t/font_776597_wmaj4dokksh.ttf') format('truetype'),
+  url('//at.alicdn.com/t/font_776597_wmaj4dokksh.svg#iconfont') format('svg');
+}
+.iconfont{
+    font-family:"iconfont" !important;
+    font-size:0.16rem;font-style:normal;
+    -webkit-font-smoothing: antialiased;
+    -webkit-text-stroke-width: 0.2px;
+    -moz-osx-font-smoothing: grayscale;}
 // 默认将输出webkit前缀，moz前缀和标准
 @mixin prefixer($property, $value, $prefixes: webkit moz o ms) {
     #{$property}: $value;
@@ -53,7 +67,6 @@
     width: 100%;
     height: 100%;
 }
-
 //主题黄色
 $borderColor:#f2f2f2;
 $themeColor:#FF2735;
@@ -67,6 +80,39 @@ body {
     font-family: PingFang-SC-Medium;
     overflow: auto;
      -webkit-overflow-scrolling: touch;
+}
+#header{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:0.44rem;
+    background:white;
+    padding:0.05rem 0.15rem;
+    box-sizing: border-box;
+    .heander-wrap{
+        height:100%;
+        border:1px solid #B2B2B2; 
+        border-radius:0.21rem; 
+        padding:0.01rem 0.01rem 0.01rem 0.1rem;     
+        @include flex(row,flex-end,center);
+        #findName{
+            flex: 1;
+            height:100%;
+            border:none;
+        }
+        ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+            font-size: 0.13rem;
+            line-height: 1.4;
+        }
+        #find{
+            width:0.6rem;
+            height:100%;
+            border:none;
+            background:none;
+            text-align:center;
+        }
+    }
 }
 #main {
     padding:2.4rem 0 0.28rem;
