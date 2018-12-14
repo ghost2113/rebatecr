@@ -1,4 +1,11 @@
 /**
+ * 详情页统计
+ */
+var _czc = _czc || [];
+_czc.push(["_setAccount", "1274687253"]);
+_czc.push(["_trackPageview", "rebatecr/goodsInfo.html", "http://www.miaokun520.com/"]);
+_czc.push(["_trackEvent", "淘返利详情页", "打开", "返利超人", 1, "goods"])
+/**
  * 取消点击事件穿透
  */
 if('addEventListener' in document) {
@@ -170,9 +177,9 @@ function goodsShare(e) {
  * 领券
  */
 function vouchers(e) {
-	console.log(e.data);
+		//下载事件
+	_czc.push(["_trackEvent", `${userID}`, `${e.data.name}`, `${e.data.itemId}`, 1, `goods`]);
 	var data = JSON.stringify(e.data);
-	//console.log(data)
 	var u = navigator.userAgent;
 	var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
 	var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端

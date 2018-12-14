@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+		<title>为你推荐</title>
+		<link rel="icon" href="./static/favicon.ico" type="image/x-icon">
+		<link rel="stylesheet" href="./css/reset.css">
+		<link rel="stylesheet" href="./css/goodsList.css">
+		<script src="https://as.alipayobjects.com/g/component/fastclick/1.0.6/fastclick.js"></script>
+		<script>
+			if('addEventListener' in document) {
+				document.addEventListener('DOMContentLoaded', function() {
+					FastClick.attach(document.body);
+				}, false);
+			}
+			if(!window.Promise) {
+				document.writeln('<script src="https://as.alipayobjects.com/g/component/es6-promise/3.2.2/es6-promise.min.js"' + '>' + '<' + '/' + 'script>');
+			}
+		</script>
+	</head>
+
+	<body>
+		<div id="loadingDiv"></div>
+		<header id="header">
+			<div class="heander-warap">
+				<input type="text" />				
+			</div>
+		</header>
+		<section id="main" style="opacity:0;">			
+			<div class="title">为你推荐</div>
+			<div id="goods">
+				<!--<a href="">
+					<dl class="goods-item">
+						<dt><img class="lazy" src="img/logo.png"/></dt>
+						<dd>
+							<div class="title">买一送一 大红袍茶叶礼盒装武夷山大红袍浓香型乌龙茶袋装雅鑫苑 </div>	
+							<div class="dd2">
+								<div class="coupon">105元券</div>
+								<div class="rebate">购买后返1.17元</div>
+							</div>
+							<div class="dd3">
+								<div class="dd3-wrap">
+									<div class="price">$175.8元</div>
+									<div class="itemPrice"><delete>789</delete></div>
+								</div>
+								<div>
+									<div class="sales">已售了2.5万</div>
+								</div>								
+							</div>
+						</dd>
+					</dl>				
+				</a>-->
+			</div>
+		</section>
+		<script src="./static/common.js"></script>
+		<script src="https://unpkg.com/zepto@1.2.0/dist/zepto.min.js"></script>
+		<script src="./js/goodsList.js"></script>
+	</body>
+
+</html>

@@ -1,0 +1,188 @@
+@charset "utf-8";
+// 默认将输出webkit前缀，moz前缀和标准
+@mixin prefixer($property, $value, $prefixes: webkit moz o ms) {
+    #{$property}: $value;
+    @each $prefix in $prefixes {
+        @if $prefix==webkit {
+            -webkit-#{$property}:#{$value};
+        }
+        @else if $prefix==moz {
+            -moz-#{$property}:#{$value};
+        }
+        @else if $prefix==o {
+            -o-#{$property}:#{$value};
+        }
+        @else if $prefix==ms {
+            -ms-#{$property}:#{$value};
+        }
+    }
+}
+//flex布局
+@mixin flex($direction, $justify:center, $alignItems:center) {
+    display: flex;
+    display: -webkit-flex;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $alignItems;
+}
+
+//字体样式
+@mixin font($size:14px, $weight:500, $family:"微软雅黑", $height:1.4, $color:#000) {
+    font-size: $size;
+    font-weight: $weight;
+    font-family: $family;
+    line-height: $height;
+    color: $color;
+}
+
+//多行文本溢出
+@mixin overflow($num:1) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $num;
+    overflow: hidden;
+}
+
+//元素水平居中
+@mixin centerRow {
+    margin: 0 auto;
+}
+
+@mixin img100 {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+//主题黄色
+$borderColor:#f2f2f2;
+$themeColor:#FF2735;
+$fontColor:#ff3926;
+html,
+body {
+    display: block;
+    height:100%;
+    min-height: 100%;
+    height:auto !important;
+    font-family: PingFang-SC-Medium;
+    overflow: auto;
+     -webkit-overflow-scrolling: touch;
+}
+#main {
+    padding:2.4rem 0 0.28rem;
+    background:url(../img/activity/bg.png) no-repeat center top #F4B885;
+    background-size:100% auto;
+    #notice{
+        width:3.5rem;
+        height:2.7rem;
+        margin:0 auto;
+        background:url(../img/activity/mokuai.png) no-repeat center center;
+        background-size:100% auto;        
+        .item1{
+            @include flex(column,flex-start,center);
+            padding:0.12rem 0.25rem 0.32rem;
+            .title{
+                display:block;
+                width:1.6rem;   
+                margin-bottom:0.1rem;             
+            }
+            .con{
+                font-family: MicrosoftYaHei;
+                font-size:0.14rem;
+                color:$fontColor;
+                line-height:0.24rem;
+            }
+        }
+        .item2{
+            @include flex(column,flex-start,center);
+            padding:0 0.15rem;
+            .title{
+                font-family: "微软雅黑";
+                font-weight:600;
+                font-size:0.15rem;
+                color:#666;
+                margin-bottom:0.05rem;             
+            }
+            .con{
+                font-family: MicrosoftYaHei;
+                font-size:0.13rem;
+                color:#666;
+                line-height:0.23rem;
+            }
+        }
+    }
+    #recommand{
+        width:1.71rem;
+        height:0.34rem;
+        margin:0.15rem auto 0.1rem;
+        background:url(../img/activity/weinituijian.png) no-repeat center center;
+        background-size:100% auto;
+    }
+    #goods{
+        padding:0 0.08rem;
+        @include flex(row,space-around,flex-start);
+        flex-wrap: wrap;
+        a:last-of-type{
+            align-self: flex-start;
+        }
+        .goods-item{
+            width:1.75rem;
+            background:white;
+            margin-bottom:0.1rem;
+            dt{
+                height:1.75rem;
+                img{
+                    display:block;
+                    width:100%;
+                    height:100%;
+                }
+            }
+            dd{
+                width:1.75rem;
+                padding:0.05rem 0.05rem;
+                .title{
+                    @include overflow(2); 
+                    text-indent: 0.14rem;
+                    line-height: 0.2rem;
+                    background:url(../img/logo.png) no-repeat left 0.03rem;
+                    background-size:0.14rem 0.14rem;                   
+                }
+                .dd2{
+                    @include flex(row,space-between,center);
+                    font-size:0.1rem;
+                    padding:0.08rem 0 0.05rem;
+                    .coupon{
+                        width:0.48rem;
+                        height:0.2rem;
+                        text-align:center;
+                        line-height:0.2rem;
+                        color:#fff;
+                        background:url(../img/activity/youhuiquan.png) no-repeat center center;
+                        background-size:100% 100%;
+                    }
+                    .rebate{
+                        color:$themeColor;
+                        font-weight: 600;
+                    }                   
+                }
+                .dd3{                   
+                    font-size:0.1rem;
+                    color:#9E9E9E;
+                     @include flex(row,space-between,flex-end);
+                     .dd3-wrap{
+                         @include flex(row,flex-start,flex-end);
+                         .price{
+                             font-size:0.15rem;
+                             color:$themeColor;
+                             font-weight: 600;
+                         }
+                         .itemPrice{
+                             margin-left:1px;
+                            text-decoration: line-through;
+                         }
+                     }
+                }
+            }
+        }
+    }
+}

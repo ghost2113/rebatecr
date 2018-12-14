@@ -1,14 +1,4 @@
 /**
- * 取消点击事件穿透
- */
-if('addEventListener' in document) {
-	document.addEventListener('DOMContentLoaded', function() {
-		FastClick.attach(document.body)
-	}, false)
-}
-var userID = TJY.getUrlParams("userId");
-//ajaxUrl = urlTest;
-/**
  * 	产品性情	
  *  @params
  *  price1：最低最后成交价（非必需）
@@ -25,13 +15,13 @@ var userID = TJY.getUrlParams("userId");
  *	sales：销量
  *	tmall:1是天猫 0不是天猫
  */
+const userID = 1265;
 $.ajax({
-	url: ajaxUrl + "/list/tao/product",
-	//url: "./json/activity.json",
+	url: "/api/list/tao/product",
 	type: "GET",
 	dataType: "json", //指定服务器返回的数据类型
 	data: {
-		userId: userID,
+		userId: 1265,
 		pageSize:1,
 		sort:true,
 		type:"new_activity",

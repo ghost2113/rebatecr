@@ -89,32 +89,33 @@ gulp.task('watch', function() {
 gulp.task('default',['script','html','img','sass','css','static','watch']);
 
 
-//gulp.task('connect', function () {
-//  connect.server({
-//      root: './src/',
-//      livereload: true,
-//      port: 8010,
-//      middleware: function (connect, opt) {
-//      	console.log(connect)
-//          return [
-//              proxy('/api', {
-//                  target: 'https://zhishun520.com/toutiaotv-api-home-1.0.0/list/tao/product',
-//                  changeOrigin:true
-//              })
-//          ]
-//      }
-//  });
-//});
-//gulp.task('watch', function () {
-//  gulp.watch(['./src/*.html'], ['html']);
-//
-//});
-//
-//gulp.task('html', function () {
-//  gulp.src('./src/*.html')
-//      .pipe(connect.reload());
-//});
-//
-//
-////运行Gulp时，默认的Task
-//gulp.task('server', ['connect', 'watch']);
+gulp.task('connect', function () {
+    connect.server({
+        root: './src/',
+        livereload: true,
+        port: 8010,
+        middleware: function (connect, opt) {
+        	console.log(connect)
+            return [
+                proxy('/api', {
+                    target: 'https://zhishun520.com/',
+                    changeOrigin:true,
+                    pathRewrite: {'^/api' : '/toutiaotv-api-home-1.0.0/'}
+                })
+            ]
+        }
+    });
+});
+gulp.task('watch_server', function () {
+    gulp.watch(['./src/*.html'], ['html']);
+
+});
+
+gulp.task('html_server', function () {
+    gulp.src('./src/*.html')
+        .pipe(connect.reload());
+});
+
+
+//运行Gulp时，默认的Task
+gulp.task('server', ['connect', 'watch_server']);
