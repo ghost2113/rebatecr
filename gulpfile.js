@@ -115,7 +115,5 @@ gulp.task('html_server', function () {
     gulp.src('./src/*.html')
         .pipe(connect.reload());
 });
-
-
 //运行Gulp时，默认的Task
 gulp.task('server', ['connect', 'watch_server']);

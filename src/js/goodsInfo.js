@@ -37,7 +37,14 @@ var userID = getUrlParams("userId"),
 	commission = getUrlParams("commission"),
 	itemUrl = getUrlParams("itemUrl"),
 	tmall = getUrlParams("tmall"),
-	nativeUrl = getUrlParams("nativeUrl");
+	nativeUrl = getUrlParams("nativeUrl"),
+	goBack = getUrlParams("goBack");
+
+	if(goBack=="true"){
+		$(".goodsShare").remove();
+		$(".vouchers").css("width","100%")
+		$(".goBack").css("display","block");
+	}
 /**
  * 	产品性情	
  *  @params
@@ -72,7 +79,7 @@ $.ajax({
 		userId: userID,
 		random: Math.random()
 	},
-	success: function(data) {
+	success: function(data) {		
 		if(data.result.success !== "true") {
 			if(userID == "5946") {
 				$('body').html(JSON.stringify(data))
@@ -277,4 +284,8 @@ function Ajax(type, url, data, success, failed){
             }
         }
     }
+}
+//返回
+function go(){
+	window.history.go(-1);
 }
